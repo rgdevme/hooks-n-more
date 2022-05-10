@@ -1,0 +1,34 @@
+{
+  "name": "use-rgdevme",
+  "version": "1.0.0",
+  "description": "Custom hooks collection",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgdevme/use-rgdevme.git"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "rgdevme"
+  ],
+  "author": "Rafael González",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rgdevme/use-rgdevme/issues"
+  },
+  "homepage": "https://github.com/rgdevme/use-rgdevme#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.9",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  }
+}
