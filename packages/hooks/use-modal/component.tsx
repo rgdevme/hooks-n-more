@@ -1,23 +1,23 @@
 import { FunctionComponent, PropsWithChildren, SyntheticEvent } from 'react'
+import { useLockBodyScroll } from '../use-lock-body-scroll'
 
-export interface ModalProps {
-	icons?: {
-		close?: FunctionComponent<{ onClick: Function }>
-		done?: FunctionComponent<{ onClick: Function }>
-	}
-	onSuccess?: () => any | Promise<any>
-	onFailure?: () => any | Promise<any>
-	backlayer?: boolean
-}
+export interface ModalProps
+	extends PropsWithChildren<{
+		icons?: {
+			close?: FunctionComponent<{ onClick: Function }>
+			done?: FunctionComponent<{ onClick: Function }>
+		}
+		onSuccess?: () => any | Promise<any>
+		onFailure?: () => any | Promise<any>
+		backlayer?: boolean
+	}> {}
 
 interface Modal
 	extends FunctionComponent<
-		PropsWithChildren<
-			{
-				active: boolean
-				close: () => void
-			} & ModalProps
-		>
+		{
+			active: boolean
+			close: () => void
+		} & ModalProps
 	> {}
 
 const Modal: Modal = ({
@@ -29,6 +29,7 @@ const Modal: Modal = ({
 	onFailure,
 	backlayer = true
 }) => {
+	useLockBodyScroll(active)
 	const handleSuccess = async (e: SyntheticEvent) => {
 		e?.preventDefault()
 		if (!!onFailure) await onFailure()

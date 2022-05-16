@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useSelection = <T,>(
+export const useSelection = <T,>(
 	items: T[],
 	identifier: keyof T,
 	initial: T[] = [],
@@ -42,4 +42,3 @@ const useSelection = <T,>(
 	}
 }
 
-export default useSelection

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 type apiRequest<T> = (term: string) => Promise<T> | T
 
-const useSearch = <T,>(callback: apiRequest<T>) => {
+export const useSearch = <T,>(callback: apiRequest<T>) => {
 	const [loading, setLoading] = useState<boolean>(false)
 	const [error, setError] = useState<string>('')
 	const [results, setResults] = useState<T>()
@@ -22,4 +22,3 @@ const useSearch = <T,>(callback: apiRequest<T>) => {
 	return { search, results, error, loading }
 }
 
-export default useSearch

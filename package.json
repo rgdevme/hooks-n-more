@@ -1,34 +1,44 @@
 {
   "name": "use-rgdevme",
-  "version": "1.0.0",
   "description": "Custom hooks collection",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "prepublish": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rgdevme/use-rgdevme.git"
-  },
+  "author": "Rafael González",
+  "repository": "git+https://github.com/rgdevme/use-rgdevme.git",
+  "homepage": "https://github.com/rgdevme/use-rgdevme#readme",
+  "bugs": "https://github.com/rgdevme/use-rgdevme/issues",
+  "version": "1.0.1",
+  "license": "MIT",
+  "types": "@rgdevme/index.d.ts",
   "keywords": [
     "react",
     "hooks",
     "rgdevme"
   ],
-  "author": "Rafael González",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rgdevme/use-rgdevme/issues"
+  "scripts": {
+    "publish": "cd @rgdevme && npm publish",
+    "build": "npm run build_types && npm run build_files",
+    "build_types": "parcel build packages/*/index.tsx --target types --no-cache",
+    "build_files": "parcel build packages/*/*/*.tsx --target library --no-cache",
+    "prepublish": "npm run build && cd @rgdevme && npm version patch"
   },
-  "homepage": "https://github.com/rgdevme/use-rgdevme#readme",
+  "targets": {
+    "library": {
+      "context": "node",
+      "isLibrary": true,
+      "outputFormat": "esmodule",
+      "distDir": "./@rgdevme"
+    },
+    "main": false
+  },
   "devDependencies": {
+    "@parcel/packager-ts": "^2.5.0",
+    "@parcel/transformer-typescript-types": "^2.5.0",
+    "@types/node": "^17.0.31",
     "@types/react": "^18.0.9",
+    "parcel": "^2.5.0",
     "typescript": "^4.5.5"
   },
   "dependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }
